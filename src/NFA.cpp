@@ -1,9 +1,9 @@
-#include "./NFA.hpp"
-#include "./RegexConverter.hpp"
+#include "../include/NFA.hpp"
+#include "../include/RegexConverter.hpp"
 #include <stack>
 #include <iostream>
 
-#define _DEBUG
+//#define _DEBUG
 
 using std::string;
 using std::stack;
