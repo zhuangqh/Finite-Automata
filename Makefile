@@ -17,4 +17,4 @@ NFA.o: ./include/NFA.hpp
 RegexConverter.o: ./include/RegexConverter.hpp
 
 clean:
-	rm ./src/*.o ./bin/test
+	rm ./src/*.o ./bin/test ./main.o
