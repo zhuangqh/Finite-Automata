@@ -1,4 +1,5 @@
 SRCS = main.cpp
+SRCS += ./src/DFA.cpp
 SRCS += ./src/NFA.cpp
 SRCS += ./src/RegexConverter.cpp
 
@@ -8,6 +9,8 @@ CXX=g++ -std=c++11
 
 all: $(OBJS)
 	$(CXX) -o ./bin/test $(OBJS)
+
+DFA.o: ./include/DFA.hpp
 
 NFA.o: ./include/NFA.hpp
 

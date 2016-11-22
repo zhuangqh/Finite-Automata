@@ -1,5 +1,6 @@
 #include <iostream>
 #include "./include/NFA.hpp"
+#include "./include/DFA.hpp"
 
 using std::cin;
 using std::cout;
@@ -12,9 +13,10 @@ int main() {
 
   NFA nfa(regex);
 
+  DFA dfa(nfa);
   string pattern;
 
   while (cin >> pattern) {
-    cout << (nfa.match(pattern) ? "match" : "unmatch") << endl;
+    cout << (dfa.match(pattern) ? "match" : "unmatch") << endl;
   }
 }
