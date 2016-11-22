@@ -83,7 +83,7 @@ NFA::NFA(string str) {
   graph = e1->start;
 }
 
-void addState(vector<State*> &l, State *s) {
+void NFA::addState(vector<State*> &l, State *s) {
   if (s == nullptr) return;
 
   if (s->c == SPLIT) {
@@ -94,18 +94,17 @@ void addState(vector<State*> &l, State *s) {
   }
 }
 
-void step(vector<State*> &curList, int c, vector<State*> &nextList) {
+void NFA::step(vector<State*> &curList, int c, vector<State*> &nextList) {
+  nextList.clear();
   for (auto state : curList) {
     if (state->c == c) {
       addState(nextList, state->out1);
       addState(nextList, state->out2);
     }
   }
-  curList = nextList;
-  nextList.clear();
 }
 
-bool is_match(const vector<State*> &l) {
+bool NFA::is_match(const vector<State*> &l) {
   for (auto state : l) {
     if (state->c == MATCH)
       return true;
@@ -113,6 +112,7 @@ bool is_match(const vector<State*> &l) {
   return false;
 }
 
+// debug
 void print(vector<State*> a) {
   for (auto s : a) {
     s->print();
@@ -131,10 +131,15 @@ bool NFA::match(const string &s) {
 
   for (auto c : s) {
     step(curList, c, nextList);
+    curList = nextList;
 #ifdef _DEBUG
     print(curList);
 #endif
   }
 
   return is_match(curList);
+}
+
+State* NFA::get_graph() {
+  return graph;
 }
